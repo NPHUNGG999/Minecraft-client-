@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File: app/src/main/res/values/styles.xml -->
+<!-- Mô tả: Style cho Luxury Modern Dark Theme -->
+
+<resources>
+
+    <!-- Base Theme cho BraDargayX -->
+    <style name="Theme.BraDargayX" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary Colors -->
+        <item name="colorPrimary">@color/gradient_start</item>
+        <item name="colorPrimaryVariant">@color/color_bg_dark</item>
+        <item name="colorSecondary">@color/gradient_end</item>
+        <item name="colorSecondaryVariant">@color/color_accent_cyan</item>
+
+        <!-- Background Colors -->
+        <item name="android:colorBackground">@color/color_bg_dark</item>
+        <item name="colorSurface">@color/color_bg_surface</item>
+
+        <!-- Text Colors -->
+        <item name="android:textColorPrimary">@color/color_text_primary</item>
+        <item name="android:textColorSecondary">@color/color_text_secondary</item>
+
+        <!-- Enable edge-to-edge layout -->
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+
+        <!-- Status bar & Navigation bar -->
+        <item name="android:statusBarColor">@color/color_bg_dark</item>
+        <item name="android:navigationBarColor">@color/color_bg_dark</item>
+
+        <!-- Elevation không sử dụng -->
+        <item name="elevation">8dp</item>
+
+        <!-- Shape appearance cho Material 3 -->
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.BraDargayX.Small</item>
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.BraDargayX.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.BraDargayX.Large</item>
+    </style>
+
+    <!-- Shape Appearance - Luxury Rounded Corners -->
+    <style name="ShapeAppearance.BraDargayX.Small" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+    <style name="ShapeAppearance.BraDargayX.Medium" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearance.BraDargayX.Large" parent="ShapeAppearance.MaterialComponents.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <!-- Text Styles -->
+    <style name="TextStyle.Headline1">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextStyle.Headline2">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextStyle.Body">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_text_primary</item>
+    </style>
+
+    <style name="TextStyle.Caption">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_text_secondary</item>
+    </style>
+
+    <!-- Button Style - Luxury -->
+    <style name="ButtonStyle.Luxury" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">30dp</item>
+        <item name="elevation">8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+
+</resources>

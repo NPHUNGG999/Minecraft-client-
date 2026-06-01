@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File: app/src/main/res/xml/data_extraction_rules.xml -->
+<!-- 
+Mô tả: Quy tắc backup dữ liệu cho Android 12+ (API 31+)
+Kiểm soát dữ liệu nào được backup khi user di chuyển app
+-->
+
+<data-extraction-rules>
+    <!-- Allow backup cho SharedPreferences -->
+    <domain name="sharedpref" backup="true">
+        <exclude domain="sharedpref" name="BraDargayX_Prefs" />
+    </domain>
+
+    <!-- Cho phép backup file từ app-specific directories -->
+    <domain name="file">
+        <!-- Backup .minecraft folder (game data) -->
+        <include domain="file" name=".minecraft" />
+        
+        <!-- Exclude cache -->
+        <exclude domain="file" name="cache" />
+    </domain>
+
+    <!-- Device identifiers - không backup -->
+    <domain name="database">
+        <exclude domain="database" name="device_settings" />
+    </domain>
+</data-extraction-rules>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File: app/src/main/res/xml/backup_descriptor.xml -->
+<!-- 
+Mô tả: Quy tắc backup toàn phần dữ liệu ứng dụng
+Sử dụng cho Android 11 và thấp hơn
+-->
+
+<full-backup-content>
+    <!-- Backup toàn bộ SharedPreferences -->
+    <include domain="sharedpref" path="." />
+
+    <!-- Backup game data (.minecraft folder) -->
+    <include domain="file" path=".minecraft" />
+
+    <!-- EXCLUDE: Cache không cần backup -->
+    <exclude domain="file" path="cache" />
+    <exclude domain="file" path="code_cache" />
+
+    <!-- EXCLUDE: Temp files -->
+    <exclude domain="file" path="temp" />
+
+    <!-- EXCLUDE: Downloaded resources (có thể re-download) -->
+    <exclude domain="file" path="resources" />
+</full-backup-content>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File: app/src/main/AndroidManifest.xml -->
+<!-- Mô tả: Android manifest cho BraDargayX Client -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bradargayx.client">
+
+    <!-- ===== PERMISSIONS ===== -->
+    
+    <!-- File Access (cho copy mods) -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    
+    <!-- Android 13+ (MANAGE_EXTERNAL_STORAGE) -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <!-- Internet (cho Minecraft multiplayer) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- Audio (cho game sound) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!-- Vibration -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Display Orientation -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!-- ===== FEATURES ===== -->
+    
+    <!-- OpenGL ES 3.0 (cho Minecraft) -->
+    <uses-feature
+        android:name="android.hardware.opengl.es3"
+        android:required="false" />
+
+    <!-- Touchscreen (không required, hỗ trợ cả keyboard/mouse) -->
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
+    <!-- ===== APPLICATION ===== -->
+    
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_descriptor"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/Theme.BraDargayX"
+        android:usesCleartextTraffic="false">
+
+        <!-- ===== MAIN ACTIVITY ===== -->
+        
+        <activity
+            android:name=".ui.view.MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+            
+            <!-- Intent filter cho launcher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ===== OPTIONAL: GAME ACTIVITY (khi game khởi chạy) ===== -->
+        <!-- Thêm nếu PojavLauncher có GameActivity riêng -->
+        <!--
+        <activity
+            android:name=".game.GameActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+        </activity>
+        -->
+
+    </application>
+
+</manifest>

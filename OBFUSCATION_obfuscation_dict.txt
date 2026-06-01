@@ -1,0 +1,115 @@
+# File: app/obfuscation_dict.txt
+# Mô tả: Dictionary cho ProGuard obfuscation
+# 
+# Được dùng bởi proguard-rules.pro:
+# -obfuscationdictionary obfuscation_dict.txt
+# -classobfuscationdictionary obfuscation_dict.txt
+# -packageobfuscationdictionary obfuscation_dict.txt
+#
+# Tác dụng: Thay vì đổi tên thành a, b, c...
+# ProGuard sẽ dùng các từ này để obfuscate code,
+# làm code khó đọc hơn
+
+# ===== VARIABLE NAMES =====
+a
+b
+c
+d
+e
+f
+g
+h
+i
+j
+k
+l
+m
+n
+o
+p
+q
+r
+s
+t
+u
+v
+w
+x
+y
+z
+aA
+aB
+aC
+aD
+aE
+aF
+aG
+aH
+aI
+aJ
+aK
+bA
+bB
+bC
+bD
+bE
+bF
+bG
+bH
+
+# ===== METHOD NAMES =====
+run
+execute
+process
+handle
+perform
+invoke
+call
+apply
+init
+setup
+start
+stop
+pause
+resume
+
+# ===== CLASS NAMES =====
+X
+Y
+Z
+AA
+AB
+AC
+AD
+AE
+AF
+AG
+AH
+AI
+AJ
+AK
+AL
+AM
+AN
+
+# ===== FIELD NAMES =====
+f1
+f2
+f3
+f4
+f5
+f6
+f7
+f8
+f9
+f10
+f11
+f12
+m1
+m2
+m3
+m4
+m5
+s1
+s2
+s3

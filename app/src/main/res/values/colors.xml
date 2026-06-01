@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_bg_dark">#121212</color>
+    <color name="color_bg_surface">#1F1F1F</color>
+    <color name="color_text_primary">#FFFFFF</color>
+    <color name="color_text_secondary">#B3B3B3</color>
+    <color name="gradient_start">#B388FF</color>
+    <color name="gradient_end">#00E5FF</color>
+    <color name="color_button_shadow">#50FFFFFF</color>
+</resources>

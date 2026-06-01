@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BraDargayX</string>
+    <string name="branding_app_name">BraDargayX</string>
+    <string name="desc_string">Fabric 1.21.1 Custom Client</string>
+    <string name="btn_play">PLAY</string>
+    <string name="status_ready">Ready to Launch</string>
+    <string name="status_setting_up">Đang thiết lập BraDargayX...</string>
+    <string name="status_extracting_mods">Đang copy mod files...</string>
+    <string name="status_launching">Launching game...</string>
+    <string name="status_error">Có lỗi, vui lòng thử lại.</string>
+    <string name="contentDescription_logo">BraDargayX Logo</string>
+</resources>

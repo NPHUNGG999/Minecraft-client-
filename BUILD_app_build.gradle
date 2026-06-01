@@ -1,0 +1,186 @@
+// File: app/build.gradle
+// Mô tả: Build configuration cho BraDargayX Client
+// 
+// QUAN TRỌNG: File này là nơi định nghĩa Application ID, dependencies, 
+// và cấu hình build types (debug/release)
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    // ===== NAMESPACE (Package Name) =====
+    // THAY ĐỔI TỪ: net.kdt.pojavlaunch
+    // THÀNH: com.bradargayx.client
+    namespace = "com.bradargayx.client"
+
+    compileSdk = 34
+
+    defaultConfig {
+        // ===== APPLICATION ID (Unique ID của app) =====
+        // THAY ĐỔI TỪ: net.kdt.pojavlaunch
+        // THÀNH: com.bradargayx.client
+        applicationId = "com.bradargayx.client"
+
+        minSdk = 26
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0.0-Release"
+
+        // String resources
+        resConfigs "vi", "en"
+
+        // ===== NDK & C++ CONFIGURATION (GIỮ NGUYÊN) =====
+        // QUAN TRỌNG: Đây là config cho native C++ code của PojavLauncher
+        // Thay đổi sai sẽ gây crash JNI!
+        externalNativeBuild {
+            cmake {
+                cppFlags("-std=c++17", "-fno-rtti", "-fno-exceptions")
+                abiFilters("arm64-v8a", "armeabi-v7a")
+            }
+        }
+
+        // ===== VECTOR DRAWABLE SUPPORT =====
+        vectorDrawables.useSupportLibrary = true
+    }
+
+    // ===== NDK BUILD CONFIGURATION =====
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+            version "3.22.1"
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable = true
+            minifyEnabled = false
+            signingConfig = signingConfigs.debug
+        }
+
+        release {
+            // ===== RELEASE CONFIGURATION =====
+            debuggable = false
+            minifyEnabled = true                    // Enable ProGuard/R8
+            shrinkResources = true                  // Loại bỏ unused resources
+            
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            
+            // Cấu hình signing (sẽ được set khi build)
+            signingConfig = signingConfigs.release
+
+            // Build config fields
+            buildConfigField "boolean", "IS_RELEASE", "true"
+        }
+    }
+
+    // ===== SIGNING CONFIG FOR RELEASE =====
+    // HƯỚNG DẪN: Thay thế các biến môi trường bằng keystore thực của bạn
+    signingConfigs {
+        release {
+            // Đường dẫn tới file keystore
+            storeFile file("release.keystore")
+            
+            // Password của keystore (lấy từ biến môi trường hoặc hardcode - NHƯ TÌM CÁCH KHÁC SAFER)
+            storePassword System.getenv("KEYSTORE_PASSWORD") ?: ""
+            
+            // Alias của key
+            keyAlias System.getenv("KEY_ALIAS") ?: "bradargayx"
+            
+            // Password của key
+            keyPassword System.getenv("KEY_PASSWORD") ?: ""
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
+        freeCompilerArgs += "-Xopt-in=kotlin.OptIn"
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+    }
+
+    lint {
+        disable 'MissingTranslation'
+        disable 'ExtraTranslation'
+        disable 'MissingDimensDp'
+    }
+
+    // ===== PACKAGING OPTIONS =====
+    // Để tránh conflict giữa các library native
+    packagingOptions {
+        exclude 'META-INF/MANIFEST.MF'
+        exclude 'META-INF/*.kotlin_module'
+        resources {
+            excludes += ['META-INF/proguard/androidx-*.pro']
+        }
+    }
+}
+
+dependencies {
+    // ===== CORE ANDROID =====
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'androidx.fragment:fragment-ktx:1.6.2'
+    implementation 'androidx.activity:activity-ktx:1.8.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+
+    // ===== MATERIAL DESIGN 3 =====
+    implementation 'com.google.android.material:material:1.11.0'
+
+    // ===== LAYOUT & UI =====
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // ===== KOTLIN COROUTINES (cho AutoSetupManager) =====
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3'
+
+    // ===== LOGGING & DEBUGGING =====
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.13'
+
+    // ===== TESTING =====
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    // ===== NATIVE LIBRARY DEPENDENCIES (PojavLauncher) =====
+    // Bạn có thể cần thêm các library native từ fork gốc
+    // implementation 'com.example:pojavlauncher-lib:1.0' (nếu có)
+}
+
+// ===== GRADLE TASK HELPERS =====
+task printBuildInfo {
+    doLast {
+        println("=== BraDargayX Build Info ===")
+        println("Application ID: ${android.defaultConfig.applicationId}")
+        println("Version: ${android.defaultConfig.versionName}")
+        println("Min SDK: ${android.defaultConfig.minSdk}")
+        println("Target SDK: ${android.defaultConfig.targetSdk}")
+        println("NDK ABI Filters: ${android.defaultConfig.externalNativeBuild.cmake.abiFilters}")
+    }
+}
+
+task checkKeystore {
+    doLast {
+        def keystoreFile = file("app/release.keystore")
+        if (keystoreFile.exists()) {
+            println("✓ Keystore found at: ${keystoreFile.absolutePath}")
+        } else {
+            println("✗ Keystore NOT found! Run: keytool -genkey ... to create")
+        }
+    }
+}
+
+// In dependencies trước build
+preBuild.dependsOn printBuildInfo
+assembleRelease.dependsOn checkKeystore

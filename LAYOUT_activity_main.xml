@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/color_bg_dark"
+    android:gravity="center_horizontal"
+    tools:context=".ui.view.MainActivity">
+
+    <!-- 🎨 PHẦN 1: SPACER ĐẨY XUỐNG -->
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- 🎮 PHẦN 2: LOGO & TITLE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="40dp">
+
+        <!-- Logo Image -->
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/ic_launcher_round"
+            android:layout_marginBottom="20dp" />
+
+        <!-- App Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/branding_app_name"
+            android:textSize="28sp"
+            android:textColor="@color/color_text_primary"
+            android:fontFamily="@font/montserrat_bold"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Subtitle -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/desc_string"
+            android:textSize="14sp"
+            android:textColor="@color/color_text_secondary"
+            android:fontFamily="@font/montserrat_regular" />
+
+    </LinearLayout>
+
+    <!-- 📊 PHẦN 3: STATUS TEXT -->
+    <LinearLayout
+        android:id="@+id/status_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginBottom="30dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <!-- Progress Bar (Hiển thị khi setup) -->
+        <ProgressBar
+            android:id="@+id/progress_setup"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            style="?android:attr/progressBarStyle"
+            android:visibility="gone"
+            android:layout_marginBottom="15dp" />
+
+        <!-- Status Text -->
+        <TextView
+            android:id="@+id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status_ready"
+            android:textSize="16sp"
+            android:textColor="@color/color_text_secondary"
+            android:fontFamily="@font/montserrat_regular"
+            android:textAlignment="center"
+            android:minHeight="20dp" />
+
+    </LinearLayout>
+
+    <!-- 🎯 PHẦN 4: SPACER ĐẨY XUỐNG -->
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- 🎮 PHẦN 5: NÚT PLAY LUXURY -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="50dp">
+
+        <!-- Nút PLAY chính (Capsule + Gradient) -->
+        <Button
+            android:id="@+id/btn_play"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="@string/btn_play"
+            android:textColor="@color/color_text_primary"
+            android:textSize="18sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textStyle="bold"
+            android:background="@drawable/shape_gradient_button"
+            android:elevation="8dp"
+            android:stateListAnimator="@animator/btn_state_animator" />
+
+        <!-- Ripple effect overlay (optional - cho hiệu ứng chạm mềm mại) -->
+        <View
+            android:id="@+id/ripple_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/ripple_effect"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+</LinearLayout>

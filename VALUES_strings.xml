@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File: app/src/main/res/values/strings.xml -->
+<!-- Mô tả: Tất cả string resources cho ứng dụng BraDargayX -->
+
+<resources>
+    <!-- App Name & Branding -->
+    <string name="app_name">BraDargayX</string>
+    <string name="branding_app_name">BraDargayX Client</string>
+    <string name="desc_string">Fabric 1.21.1 Custom Client</string>
+
+    <!-- Button Text -->
+    <string name="btn_play">PLAY</string>
+    <string name="btn_settings">Settings</string>
+    <string name="btn_exit">Exit</string>
+
+    <!-- Status Messages -->
+    <string name="status_ready">Ready to Launch</string>
+    <string name="status_setting_up">Setting up BraDargayX...</string>
+    <string name="status_extracting_mods">Extracting mod files...</string>
+    <string name="status_launching">Launching game...</string>
+    <string name="status_error">Error occurred. Please restart.</string>
+
+    <!-- Dialog & Messages -->
+    <string name="dialog_title_error">Error</string>
+    <string name="dialog_msg_setup_failed">Setup failed. Please check storage permissions.</string>
+    <string name="dialog_btn_ok">OK</string>
+    <string name="dialog_btn_retry">Retry</string>
+
+    <!-- Permissions -->
+    <string name="permission_storage_required">Storage permission is required for BraDargayX to function.</string>
+
+    <!-- Accessibility -->
+    <string name="contentDescription_logo">BraDargayX Logo</string>
+    <string name="contentDescription_play_button">Play Button - Launch game</string>
+
+</resources>

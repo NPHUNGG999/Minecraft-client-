@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- File: app/src/main/res/animator/btn_state_animator.xml -->
+<!-- Mô tả: Animator cho các trạng thái của button (pressed, normal) để tạo hiệu ứng nhấn -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Khi nút được nhấn -->
+    <item android:state_pressed="true">
+        <set>
+            <objectAnimator
+                android:propertyName="elevation"
+                android:duration="100"
+                android:valueTo="4dp"
+                android:valueType="floatType" />
+            <objectAnimator
+                android:propertyName="translationZ"
+                android:duration="100"
+                android:valueTo="-4dp"
+                android:valueType="floatType" />
+        </set>
+    </item>
+
+    <!-- Khi nút không được nhấn (trạng thái bình thường) -->
+    <item android:state_enabled="true">
+        <set>
+            <objectAnimator
+                android:propertyName="elevation"
+                android:duration="100"
+                android:valueTo="8dp"
+                android:valueType="floatType" />
+            <objectAnimator
+                android:propertyName="translationZ"
+                android:duration="100"
+                android:valueTo="0dp"
+                android:valueType="floatType" />
+        </set>
+    </item>
+
+</selector>
